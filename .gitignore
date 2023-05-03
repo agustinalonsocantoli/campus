@@ -26,4 +26,4 @@ dist-ssr
 .env           
 .env.local          
 .env.[mode]         
-.env.[mode].local 
+.env.[mode].local
