@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Chakra UI
 import { Box, Flex, Image, Heading, FormLabel, Input, Checkbox, Button, Text } from '@chakra-ui/react'
 // Img
@@ -8,6 +9,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 // Interfaces
 import { UserInt } from '../../interfaces/UserInt'
+// Toast
+import { useToast } from '@chakra-ui/react'
+import { notify } from '../../shared/utils/functions/notify'
+import { status } from '../../shared/utils/functions/notify'
+// Middlewares
+import { getToken } from '../../shared/middlewares/getToken'
 
 type Props = {
     setUser: (action: UserInt) => void;
@@ -16,30 +23,34 @@ type Props = {
 export const Login = (props: Props) => {
     const { setUser } = props;
     const navigate = useNavigate();
+    const toast = useToast();
     const [ email, setEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
 
+    const validateLogin = (value: string) => {
+        localStorage.setItem('token', value)
+            
+        setUser({
+            auth: true,
+            email: null,
+        });
+
+        navigate('/')
+    };
+    
     const handleSubmit = (e:  React.FormEvent) => {
         e.preventDefault();
 
-        if(email === import.meta.env.VITE_EMAIL_LOGIN) {
-            if (password === import.meta.env.VITE_PASSWORD_LOGIN) {
-                setUser({
-                    auth: true,
-                    email: null,
-                });
+        getToken(email, password).then((response: string) => {
 
-                navigate('/')
-            } else {
-                console.log("PASSWORD")
-            }
-        } else {
-            console.log('USER')
-        }
+            (typeof response === "string")
+            ? validateLogin(response)
+            : notify(toast, status.error, "Email o Password incorrecto!");
+        })
+        .catch((error) => {
+            console.log(error)
+        });
     };
-
-    console.log(email)
-    console.log(password)
 
     return(
         <Flex h="100vh">

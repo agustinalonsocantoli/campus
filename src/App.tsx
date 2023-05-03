@@ -4,18 +4,17 @@ import { ChakraProvider } from '@chakra-ui/react'
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";
 // React
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import React, { useEffect, useContext, useState } from 'react';
-// Middlewares
-import { getUsers } from './shared/middlewares/getUsers';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 // Components
 import { Login } from './pages/Login/Login';
 import  { RequireAuth } from './pages/RequireAuth/RequireAuth';
 // Interfaces
 import { UserInt } from './interfaces/UserInt';
+import { Courses } from './pages/Courses/Courses';
 
 const AuthContext = React.createContext<UserInt>({
-  auth: false,
+  auth: localStorage.getItem('token') ? true : false,
   email: null,
 });
 
@@ -26,27 +25,24 @@ export const useAuthContex = () => {
 
 function App() {
   const [ user, setUser ] = useState<UserInt>({
-    auth: false,
+    auth: localStorage.getItem('token') ? true : false,
     email: null,
   });
-
-  useEffect(() => {
-    getUsers();
-
-  }, [])
 
   return (
     <Router basename='/'>
       <AuthContext.Provider value={user} >
         <ChakraProvider>
           <Routes>
-            <Route path='/login' element={<Login setUser={setUser}/>}/>
+            <Route path='/login' element={!user.auth ? <Login setUser={setUser}/> : <Navigate to={"/"} />}/>
 
             <Route element={<RequireAuth />}>
               <Route path='/' element={<div>
                 <h1>Start Campus</h1>
                 <h2>Test Vercel</h2>
               </div>} />
+
+              <Route path='/cursos' element={<Courses />} />
             </Route>
           </Routes>
         </ChakraProvider>
