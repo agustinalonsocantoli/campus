@@ -11,7 +11,7 @@ export const getToken = async (email: string, password: string) => {
             } 
         );
 
-        return data.jwt;
+        return data;
     } catch(error) {
         console.log(error)
     }
