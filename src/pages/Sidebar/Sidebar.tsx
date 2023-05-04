@@ -43,7 +43,7 @@ export const Sidebar = () => {
                 <LinkMenu path="/" icon={BiHome} text="Inicio" isOpen={isOpen}/>
                 <LinkMenu path="/" icon={MdOutlineSignpost} text="Ruta" isOpen={isOpen}/>
                 <LinkMenu path="/" icon={FiBriefcase} text="Empleo" isOpen={isOpen}/>
-                <LinkMenu path="/" icon={BiBookBookmark} text="Cursos" active={true} isOpen={isOpen}/>
+                <LinkMenu path="/cursos" icon={BiBookBookmark} text="Cursos" active={true} isOpen={isOpen}/>
                 <LinkMenu path="/" icon={BiBadgeCheck} text="Certificaciones" isOpen={isOpen}/>
                 <LinkMenu path="/" icon={HiOutlineChatAlt2} text="Foros" isOpen={isOpen}/>
                 <LinkMenu path="/" icon={BiNews} text="Novedades" isOpen={isOpen}/>

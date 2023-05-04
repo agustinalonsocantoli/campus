@@ -44,7 +44,7 @@ function App() {
             {user.auth && <Sidebar />}
 
             <Box flex="1" bg="#f8f8f9" pl="86px">
-              <Topbar />
+            {user.auth && <Topbar />}
 
               <Routes>
                 <Route path='/login' element={!user.auth ? <Login setUser={setUser}/> : <Navigate to={"/"} />}/>
