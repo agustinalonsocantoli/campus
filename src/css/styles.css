@@ -21,18 +21,28 @@ li {
   list-style: none;
 }
 
-.recovery_pass {
-  color: #32D4A4;
-  font-size: 14px;
-  font-weight: bold;
+body {
+  background-color: #f8f8f9;
 }
 
-.privacy_policy {
-  flex: 1;
-  text-align: right;
-  font-size: 12px;
-  font-weight: bold;
-  text-decoration: underline;
+.card_courses:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.chakra-slide {
+  max-width: 230px !important;
+}
+
+.active {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.navlink:hover {
+  text-decoration: none !important;
+}
+.navlink_hover:hover svg, .navlink_hover:hover p {
+  color: #32d4a4 !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

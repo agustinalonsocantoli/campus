@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Chakra UI
-import { Box, Flex, Image, Heading, FormLabel, Input, Checkbox, Button, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Heading, FormLabel, Input, Checkbox, Button, Text, Link } from '@chakra-ui/react'
 // Img
 import loginImg from '../../assets/img/login.png'
 import logoOB from '../../assets/img/logo.png'
 // React
-import { Link, useNavigate } from 'react-router-dom'
+import { Link as LinkRouter, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 // Interfaces
 import { UserInt } from '../../interfaces/UserInt'
@@ -16,7 +16,7 @@ import { status } from '../../shared/utils/functions/notify'
 // Middlewares
 import { getToken } from '../../shared/middlewares/getToken'
 
-type Props = {
+interface Props {
     setUser: (action: UserInt) => void;
 }
 
@@ -27,12 +27,14 @@ export const Login = (props: Props) => {
     const [ email, setEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
 
-    const validateLogin = (value: string) => {
-        localStorage.setItem('token', value)
+    const validateLogin = (jwt: string, user: UserInt) => {
+        localStorage.setItem('token', jwt)
             
         setUser({
             auth: true,
-            email: null,
+            email: user?.email,
+            username: user?.username ? user.username : '',
+            image: user?.image ? user.image : '',
         });
 
         navigate('/')
@@ -41,10 +43,10 @@ export const Login = (props: Props) => {
     const handleSubmit = (e:  React.FormEvent) => {
         e.preventDefault();
 
-        getToken(email, password).then((response: string) => {
+        getToken(email, password).then((response: any) => {
 
-            (typeof response === "string")
-            ? validateLogin(response)
+            (typeof response !== "undefined")
+            ? validateLogin(response.jwt, response.user)
             : notify(toast, status.error, "Email o Password incorrecto!");
         })
         .catch((error) => {
@@ -54,7 +56,7 @@ export const Login = (props: Props) => {
 
     return(
         <Flex h="100vh">
-            <Flex flex="1" flexDirection="column" p="3% 0">
+            <Flex flex="1" flexDirection="column" pt="2%" pb="2%">
                 <Image
                 src={logoOB}
                 alt='img/logo'
@@ -63,10 +65,10 @@ export const Login = (props: Props) => {
                 p="0 3%"
                 />
 
-                <Box w="60%" m="auto" mt="100px">
+                <Box w="60%" m="auto" mt="80px">
                     <Heading fontSize="28px">¡Bienvenido/a!</Heading>
 
-                    <Box mt="12">
+                    <Box mt="10">
                         <form onSubmit={handleSubmit}>
                             <Box>
                                 <FormLabel fontSize="13px" fontWeight="bold">Email</FormLabel>
@@ -94,7 +96,9 @@ export const Login = (props: Props) => {
 
                             <Flex justifyContent="space-between" alignItems="center" mt="8">
                                 <Checkbox>Recuerdame</Checkbox>
-                                <Link to={""} className='recovery_pass'>¿Has olvidado la contraseña?</Link>
+                                <Link as={LinkRouter} to={""} color="#32D4A4" fontSize={14} fontWeight="bold">
+                                    ¿Has olvidado la contraseña?
+                                </Link>
                             </Flex>
 
                             <Button type='submit' background='#32D4A4' color="#FFFFFF" mt="8" w="100%">Iniciar sesíon</Button>
@@ -103,12 +107,12 @@ export const Login = (props: Props) => {
                     </Box>
                 </Box>
 
-                <Flex p="0 3%">
+                <Flex p="0 3%" mt={3}>
                     <Text w="55%" fontSize="12px" fontWeight="bold">
                         Copyright © 2023 OpenBootcamp S.L. Todos los derechos reservados.
                     </Text>
 
-                    <Link to={""} className='privacy_policy'>
+                    <Link as={LinkRouter} to={""} flex="1" textAlign="right" fontSize={12} fontWeight="bold" textDecoration="underline">
                         Política de Privacidad
                     </Link>
                 </Flex>

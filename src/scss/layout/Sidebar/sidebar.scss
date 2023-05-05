@@ -1,0 +1,21 @@
+.chakra-slide {
+    max-width: 230px !important;
+}
+
+.active {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.navlink {
+
+    &:hover {
+        text-decoration: none !important;
+    }
+
+    &_hover:hover { 
+        svg, p {
+            color: #32d4a4 !important;
+        }
+    }
+}
