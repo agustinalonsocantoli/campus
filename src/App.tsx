@@ -34,25 +34,32 @@ function App() {
     username: null,
     image: null,
   });
+  
+  const [ title, setTitle ] = useState<string>('Inicio')
 
   return (
     <Router basename='/'>
       <AuthContext.Provider value={user} >
         <ChakraProvider>
-
           <Flex>
-            {user.auth && <Sidebar />}
+            {user.auth && <Sidebar title={title} />}
 
-            <Box flex="1" bg="#f8f8f9" pl="86px">
-            {user.auth && <Topbar />}
+            <Box flex="1" pl="86px">
+            {user.auth && <Topbar setUser={setUser} title={title} setTitle={setTitle} />}
 
               <Routes>
                 <Route path='/login' element={!user.auth ? <Login setUser={setUser}/> : <Navigate to={"/"} />}/>
 
                   <Route element={<RequireAuth />}>
-                    <Route path='/' element={<Heading px="5%" fontSize={30}>Content</Heading>} />
-
+                    <Route path='/' element={<Heading p="5%" fontSize={30}>Inicio</Heading>} />
+                    <Route path='/rutas' element={<Heading p="5%" fontSize={30}>Rutas</Heading>} />
+                    <Route path='/empleos' element={<Heading p="5%" fontSize={30}>Empleo</Heading>} />
                     <Route path='/cursos' element={<Courses />} />
+                    <Route path='/certificaciones' element={<Heading p="5%" fontSize={30}>Certificaciones</Heading>} />
+                    <Route path='/foros' element={<Heading p="5%" fontSize={30}>Foros</Heading>} />
+                    <Route path='/novedades' element={<Heading p="5%" fontSize={30}>Novedades</Heading>} />
+                    <Route path='/comunidad' element={<Heading p="5%" fontSize={30}>Comunidad</Heading>} />
+                    <Route path='/favoritos' element={<Heading p="5%" fontSize={30}>Favoritos</Heading>} />
                   </Route>
               </Routes>
             </Box>
