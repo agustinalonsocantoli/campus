@@ -3,6 +3,7 @@ import { Box, ChakraProvider, Flex, Heading } from '@chakra-ui/react'
 // Prime React
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";
+import 'primeicons/primeicons.css';
 // React
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';

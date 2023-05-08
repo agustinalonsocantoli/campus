@@ -1,0 +1,27 @@
+.p-column-header-content {
+    justify-content: center;
+} 
+
+.p-datatable-tbody {
+
+    td {
+        text-align: center !important;
+        cursor: pointer;
+
+        img {
+            margin: auto !important;
+        }
+    }
+}
+
+.dark-mode {
+    background-color: #2d3748;
+    border-bottom: 1px solid #323339 !important;
+
+    th {
+        background-color: #2d3748 !important;
+        border-bottom: 1px solid #323339 !important;
+        color: #FFFFFF !important;
+    }
+}
+

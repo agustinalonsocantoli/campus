@@ -1,0 +1,30 @@
+.p-selectbutton .p-button.p-highlight {
+    background-color: rgb(4, 122, 243);
+    border-color: rgb(4, 122, 243);
+    color: #FFFFFF;
+    outline: none;
+
+    &:hover {
+        background-color: rgb(4, 122, 243);
+        border-color: rgb(4, 122, 243);
+    }
+}
+
+.p-focus:focus {
+    box-shadow: none;
+}
+
+
+.dark_mode .p-selectbutton .p-button:not(.p-highlight) {
+    background-color: #2d3748 !important;
+    border-color: #2d3748;
+
+    &:hover {
+        border-color: #2d3748 !important;
+    }
+    
+    i {
+        color: #FFFFFF;
+    }
+}
+

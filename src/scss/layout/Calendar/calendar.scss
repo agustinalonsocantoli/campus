@@ -1,0 +1,84 @@
+.p-datepicker {
+    border-radius: 14px !important;
+    padding: 0 !important;
+}
+
+.p-datepicker-header {
+    background-color: #f0f0f3 !important;
+}
+
+.p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-year:enabled:hover, .p-datepicker .p-datepicker-header .p-datepicker-title .p-datepicker-month:enabled:hover {
+    color: #32d4a4;
+}
+
+.p-link:focus {
+    box-shadow: none !important;
+}
+
+.p-datepicker .p-datepicker-header .p-datepicker-prev:focus, .p-datepicker .p-datepicker-header .p-datepicker-next:focus {
+    box-shadow: none !important;
+}
+
+.p-datepicker table td.p-datepicker-today > span {
+    border-radius: 5px;
+}
+
+.p-datepicker table td > span.p-highlight {
+    color: #FFFFFF;
+    background-color: #32d4a4;
+    border-radius: 5px;
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+    color: #FFFFFF;
+    background-color: #32d4a4;
+    border-radius: 5px;
+}
+
+.p-datepicker table td {
+    font-weight: bold;
+}
+
+.p-datepicker table th > span {
+    color: #a5a8b3;
+}
+
+.p-datepicker-other-month {
+    background-color: #e6e6ea;
+}
+
+.p-datepicker table td > span:focus {
+    box-shadow: none !important; 
+}
+
+.p-datepicker:not(.p-disabled) table td span:not(.p-highlight):not(.p-disabled):hover {
+    background-color: rgba(38,200,171,.4);
+    border-radius: 5px;
+}
+
+.dark_mode-calendar {
+
+    .p-datepicker {
+        border: 1px solid #1d1e22 !important;
+        background-color: #2d3748 !important;
+
+    }
+
+    .p-datepicker-header {
+        background-color: #1d1e22 !important;
+        color: #FFFFFF !important;
+        border-color: #2d3748 !important;
+    }
+
+    .p-datepicker-calendar {
+        span {
+            color: #FFFFFF !important;
+        }
+    }
+
+    .p-datepicker-other-month {
+        background-color: #323339;
+        color: #3d4150 !important;
+    }
+
+}
