@@ -6,20 +6,26 @@ import "primereact/resources/primereact.min.css";
 // React
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
+// Interfaces
+import { UserInt } from './interfaces/UserInt';
 // Components
 import { Login } from './pages/Login/Login';
 import  { RequireAuth } from './pages/RequireAuth/RequireAuth';
 import { Courses } from './pages/Courses/Courses';
 import { Sidebar } from './pages/Sidebar/Sidebar';
 import { Topbar } from './pages/Topbar/Topbar';
-// Interfaces
-import { UserInt } from './interfaces/UserInt';
+import { Home } from './pages/Home/Home';
 
 const AuthContext = React.createContext<UserInt>({
   auth: localStorage.getItem('token') ? true : false,
   email: null,
   username: null,
   image: null,
+  first_name: null,
+  last_name: null,
+  country: null,
+  linkedin: null,
+  confirmed: null
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -28,11 +34,18 @@ export const useAuthContex = () => {
 }
 
 function App() {
+  const perfilUser: UserInt = JSON.parse(localStorage.getItem('perfil') || '{}');
+
   const [ user, setUser ] = useState<UserInt>({
     auth: localStorage.getItem('token') ? true : false,
-    email: null,
-    username: null,
-    image: null,
+    email: perfilUser?.email ? perfilUser.email : null,
+    username: perfilUser?.username ? perfilUser.username : null,
+    image: perfilUser?.image ? perfilUser.image : null,
+    first_name: perfilUser?.first_name ? perfilUser.first_name : null,
+    last_name: perfilUser?.last_name ? perfilUser.last_name : null,
+    country: perfilUser?.country ? perfilUser.country : null,
+    linkedin: perfilUser?.linkedin ? perfilUser.linkedin : null,
+    confirmed: perfilUser?.confirmed ? perfilUser.confirmed : null
   });
   
   const [ title, setTitle ] = useState<string>('Inicio')
@@ -51,7 +64,7 @@ function App() {
                 <Route path='/login' element={!user.auth ? <Login setUser={setUser}/> : <Navigate to={"/"} />}/>
 
                   <Route element={<RequireAuth />}>
-                    <Route path='/' element={<Heading p="5%" fontSize={30}>Inicio</Heading>} />
+                    <Route path='/' element={<Home />} />
                     <Route path='/rutas' element={<Heading p="5%" fontSize={30}>Rutas</Heading>} />
                     <Route path='/empleos' element={<Heading p="5%" fontSize={30}>Empleo</Heading>} />
                     <Route path='/cursos' element={<Courses />} />

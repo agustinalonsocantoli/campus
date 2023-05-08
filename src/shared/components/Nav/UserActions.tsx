@@ -52,6 +52,11 @@ export const UserActions = (props: Props) => {
             email: null,
             username: null,
             image: null,
+            first_name: null,
+            last_name: null,
+            country: null,
+            linkedin: null,
+            confirmed: null
         });
 
         navigate('/login')
