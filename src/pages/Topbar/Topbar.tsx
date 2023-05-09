@@ -5,7 +5,7 @@ import { FaRegCalendarAlt } from "react-icons/fa"
 import { BiBell } from "react-icons/bi"
 // React
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // Interfaces
 import { UserInt } from "../../interfaces/UserInt";
 // Functions
@@ -13,6 +13,7 @@ import { getTitle } from "../../shared/utils/functions/title";
 // Components
 import { BtnDonation } from "../../shared/components/Buttons/BtnDonation";
 import { UserActions } from "../../shared/components/Nav/UserActions";
+import { DrawerCalendar } from "../../shared/components/Drawer/DrawerCalendar";
 
 interface Props {
     setUser: (action: UserInt) => void;
@@ -22,8 +23,9 @@ interface Props {
 
 export const Topbar = (props: Props) => {
     const { setUser, title, setTitle } = props;
-    
     const location = useLocation();
+    const [ openCalendar, setOpenCalendar ] = useState<boolean>(false)
+    const [ openAlert, setOpenAlert ] = useState<boolean>(false)
 
     useEffect(() => {
         setTitle(getTitle(location.pathname))
@@ -43,6 +45,7 @@ export const Topbar = (props: Props) => {
                 alignItems="center" 
                 justifyContent="center" 
                 _hover={{ bg: "transparent" }}
+                onClick={() => setOpenCalendar(true)}
                 >
                     <Icon as={FaRegCalendarAlt} color="#a5a8b3" w="24px" h="24px" _hover={{ color: "rgba(165, 168, 179, .7)" }}/>
                 </Button>
@@ -53,12 +56,16 @@ export const Topbar = (props: Props) => {
                 alignItems="center" 
                 justifyContent="center" 
                 _hover={{ bg: "transparent" }}
+                onClick={() => setOpenAlert(true)}
                 >
                     <Icon as={BiBell} color="#a5a8b3" w="24px" h="24px" _hover={{ color: "rgba(165, 168, 179, .7)" }}/>
                 </Button>
 
                 <UserActions setUser={setUser} />
             </Flex>
+
+            <DrawerCalendar isOpen={openCalendar} setIsOpen={setOpenCalendar} callComponent="calendar"/>
+            <DrawerCalendar isOpen={openAlert} setIsOpen={setOpenAlert} callComponent="alert"/>
         </Flex>
     );
 };

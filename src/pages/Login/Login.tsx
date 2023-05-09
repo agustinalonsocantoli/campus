@@ -28,14 +28,22 @@ export const Login = (props: Props) => {
     const [ password, setPassword ] = useState<string>('');
 
     const validateLogin = (jwt: string, user: UserInt) => {
-        localStorage.setItem('token', jwt)
-            
-        setUser({
+        const perfilUser = {
             auth: true,
             email: user?.email,
             username: user?.username ? user.username : '',
             image: user?.image ? user.image : '',
-        });
+            first_name: user?.first_name,
+            last_name: user?.last_name,
+            country: user?.country ? user.country : '',
+            linkedin: user?.linkedin ? user.linkedin : '',
+            confirmed: user?.confirmed
+        }
+
+        localStorage.setItem('token', jwt)
+        localStorage.setItem('perfil', JSON.stringify(perfilUser))
+            
+        setUser(perfilUser);
 
         navigate('/')
     };
