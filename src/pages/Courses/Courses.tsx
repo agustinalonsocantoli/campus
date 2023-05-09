@@ -9,12 +9,12 @@ import { Heading, SimpleGrid, Box, Flex } from '@chakra-ui/react';
 import { CardCourse } from './Components/CardCourse';
 import { BtnView } from '../../shared/components/Buttons/BtnView';
 import { TableCourse } from './Components/TableCourse';
-import { OrderSelect } from '../../shared/components/Buttons/OrderSelect';
+// import { OrderSelect } from '../../shared/components/Buttons/OrderSelect';
 
 export const Courses = () => {
     const [ courses, setCourses ] = useState<any>([]);
     const [ option, setOption ] = useState<string>("grid");
-    const [ order, setOrder ] = useState<string>("ascendente");
+    // const [ order, setOrder ] = useState<string>("ascendente");
     
     useEffect(() => {
         getCourses().then((response: any) => {
@@ -23,10 +23,10 @@ export const Courses = () => {
         
     }, [])
 
-    useEffect(() => {
-        // const filterCourses = courses?.filter(course => course.prominent)
+    // useEffect(() => {
+    //     const filterCourses = courses?.filter(course => course.prominent)
         
-    }, [courses])
+    // }, [courses])
 
     return(
         <Box p="34px">
@@ -39,7 +39,7 @@ export const Courses = () => {
                     </Flex>
 
                     <Flex>
-                        <OrderSelect setSelect={setOrder}/>
+                        {/* <OrderSelect setSelect={setOrder}/> */}
                     </Flex>
                 </Flex>
                 
