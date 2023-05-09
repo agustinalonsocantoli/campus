@@ -6,11 +6,18 @@
 
     td {
         text-align: center !important;
-        cursor: pointer;
 
         img {
             margin: auto !important;
         }
+    }
+
+    tr {
+        cursor: pointer;
+    }
+
+    tr:hover {
+        background-color: rgba(0, 0, 0, .1) !important;
     }
 }
 

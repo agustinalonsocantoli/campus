@@ -83,10 +83,15 @@ body {
 
 .p-datatable-tbody td {
   text-align: center !important;
-  cursor: pointer;
 }
 .p-datatable-tbody td img {
   margin: auto !important;
+}
+.p-datatable-tbody tr {
+  cursor: pointer;
+}
+.p-datatable-tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 .dark-mode {

@@ -9,10 +9,12 @@ import { Heading, SimpleGrid, Box, Flex } from '@chakra-ui/react';
 import { CardCourse } from './Components/CardCourse';
 import { BtnView } from '../../shared/components/Buttons/BtnView';
 import { TableCourse } from './Components/TableCourse';
+import { OrderSelect } from '../../shared/components/Buttons/OrderSelect';
 
 export const Courses = () => {
     const [ courses, setCourses ] = useState<any>([]);
     const [ option, setOption ] = useState<string>("grid");
+    const [ order, setOrder ] = useState<string>("ascendente");
     
     useEffect(() => {
         getCourses().then((response: any) => {
@@ -21,11 +23,26 @@ export const Courses = () => {
         
     }, [])
 
+    useEffect(() => {
+        // const filterCourses = courses?.filter(course => course.prominent)
+        
+    }, [courses])
+
     return(
         <Box p="34px">
             <Flex justifyContent="space-between" alignItems="center" >
                 <Heading fontSize={20} lineHeight="100%">Cursos</Heading>
-                <BtnView option={option} setOption={setOption} />
+
+                <Flex gap="10px" alignItems="center">
+                    <Flex flex="1">
+                        <BtnView option={option} setOption={setOption} />
+                    </Flex>
+
+                    <Flex>
+                        <OrderSelect setSelect={setOrder}/>
+                    </Flex>
+                </Flex>
+                
             </Flex>
 
             { option === "grid" ?
