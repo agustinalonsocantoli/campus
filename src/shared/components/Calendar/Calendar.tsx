@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // PrimeReact
 import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import { Calendar as PrimeCalendar, CalendarChangeEvent } from 'primereact/calendar';
@@ -9,7 +10,7 @@ import { destructureDate } from '../../utils/functions/destructureDate';
 
 export const Calendar = () => {
     const dateNow = new Date();
-    const [date, setDate] = useState<string | Date | Date[] | null | undefined>(dateNow);
+    const [date, setDate] = useState<any>(dateNow);
     const [day, setDay] = useState<Array<number | string>>([]);
     const [month, setMonth] = useState<string>('');
     const classCalendar = useColorModeValue("none", "dark_mode-calendar");
