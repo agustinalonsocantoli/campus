@@ -9,7 +9,7 @@ import { destructureDate } from '../../utils/functions/destructureDate';
 
 export const Calendar = () => {
     const dateNow = new Date();
-    const [date, setDate] = useState<string | Date | null | undefined>(dateNow);
+    const [date, setDate] = useState<string | Date | Date[] | null | undefined>(dateNow);
     const [day, setDay] = useState<Array<number | string>>([]);
     const [month, setMonth] = useState<string>('');
     const classCalendar = useColorModeValue("none", "dark_mode-calendar");
