@@ -1,18 +1,18 @@
 import axios from "axios";
 
 export const getCourses = async () => {
-    const token = import.meta.env.VITE_TOKEN_CAMPUS_API;
+    const token = localStorage.getItem('token') ? localStorage.getItem('token') : '';
     
     try{
         const { data } = await axios.get(
-            `${import.meta.env.VITE_URL_CAMPUS_API}cursos`,
+            `${import.meta.env.VITE_URL_CAMPUS_API}courses`,
             { 
                 headers: {
-                    "Authorization" : `Bearer ${token}`
+                    "x-access-token" : `${token}`
                 } 
             }
         );
-
+        
         return data.data;
     } catch(error) {
         console.log(error)

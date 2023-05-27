@@ -27,7 +27,7 @@ interface Props {
 
 export const UserActions = (props: Props) => {
     const { setUser } = props;
-    const { username, image } = useAuthContex();
+    const { username, avatarUrl } = useAuthContex();
     const toast = useToast();
     const navigate = useNavigate();
 
@@ -51,10 +51,11 @@ export const UserActions = (props: Props) => {
             auth: false,
             email: null,
             username: null,
-            image: null,
-            first_name: null,
-            last_name: null,
+            avatarUrl: null,
+            firstName: null,
+            lastName: null,
             country: null,
+            city: null,
             linkedin: null,
             confirmed: null
         });
@@ -66,7 +67,7 @@ export const UserActions = (props: Props) => {
     return(
         <Flex>
             <Flex bg={bgModal} pr="10px" gap="10px" h="40px" alignItems="center" borderRadius="91px" pos="relative">
-                <Avatar name={`${username}`} src={`${image}`} size="md"/>
+                <Avatar name={`${username}`} src={`${avatarUrl}`} size="md"/>
 
                 <Button 
                 onClick={handleClick}

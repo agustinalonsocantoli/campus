@@ -21,10 +21,11 @@ const AuthContext = React.createContext<UserInt>({
   auth: localStorage.getItem('token') ? true : false,
   email: null,
   username: null,
-  image: null,
-  first_name: null,
-  last_name: null,
+  avatarUrl: null,
+  firstName: null,
+  lastName: null,
   country: null,
+  city: null,
   linkedin: null,
   confirmed: null
 });
@@ -41,10 +42,11 @@ function App() {
     auth: localStorage.getItem('token') ? true : false,
     email: perfilUser?.email ? perfilUser.email : null,
     username: perfilUser?.username ? perfilUser.username : null,
-    image: perfilUser?.image ? perfilUser.image : null,
-    first_name: perfilUser?.first_name ? perfilUser.first_name : null,
-    last_name: perfilUser?.last_name ? perfilUser.last_name : null,
+    avatarUrl: perfilUser?.avatarUrl ? perfilUser.avatarUrl : null,
+    firstName: perfilUser?.firstName ? perfilUser.firstName : null,
+    lastName: perfilUser?.lastName ? perfilUser.lastName : null,
     country: perfilUser?.country ? perfilUser.country : null,
+    city: perfilUser?.city ? perfilUser.city : null,
     linkedin: perfilUser?.linkedin ? perfilUser.linkedin : null,
     confirmed: perfilUser?.confirmed ? perfilUser.confirmed : null
   });

@@ -20,16 +20,16 @@ export const CardModal = (props: Props) => {
 
                 <ModalBody>
                     <CardCourse 
-                    image={selectedRow?.image} 
+                    image={selectedRow?.imgUrl} 
                     type={selectedRow?.type} 
                     name={selectedRow?.name} 
-                    modules={selectedRow?.modules} 
+                    modules={selectedRow?.modules.length} 
                     duration={selectedRow?.duration}
                     />
 
                     <Box px={4} mt={5}>
                         <Text fontSize={18} fontWeight="semibold">Sobre este curso</Text>
-                        <Text fontSize={14} mt={2}>{selectedRow?.descripcion}</Text>
+                        <Text fontSize={14} mt={2}>{selectedRow?.description}</Text>
                     </Box>
                 </ModalBody>
             </ModalContent>

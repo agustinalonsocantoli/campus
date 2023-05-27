@@ -46,7 +46,7 @@ export const CardCourse = (props: Props) => {
 
                     <Flex alignItems="center" gap={1} color="#A5A8B3" fontWeight="bold">
                         <Icon as={BiTimeFive} boxSize={6} />
-                        <Text fontSize="14px" lineHeight="16px">{duration}h</Text>
+                        <Text fontSize="14px" lineHeight="16px">{duration}</Text>
                     </Flex>
                 </Flex>
             </CardBody>

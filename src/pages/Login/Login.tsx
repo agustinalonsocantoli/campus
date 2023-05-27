@@ -28,14 +28,15 @@ export const Login = (props: Props) => {
     const [ password, setPassword ] = useState<string>('');
 
     const validateLogin = (jwt: string, user: UserInt) => {
-        const perfilUser = {
+        const perfilUser: UserInt = {
             auth: true,
             email: user?.email,
             username: user?.username ? user.username : '',
-            image: user?.image ? user.image : '',
-            first_name: user?.first_name,
-            last_name: user?.last_name,
+            avatarUrl: user?.avatarUrl ? user.avatarUrl : '',
+            firstName: user?.firstName,
+            lastName: user?.lastName,
             country: user?.country ? user.country : '',
+            city: user?.city ? user.city : '',
             linkedin: user?.linkedin ? user.linkedin : '',
             confirmed: user?.confirmed
         }
@@ -54,7 +55,7 @@ export const Login = (props: Props) => {
         getToken(email, password).then((response: any) => {
 
             (typeof response !== "undefined")
-            ? validateLogin(response.jwt, response.user)
+            ? validateLogin(response.token, response.data)
             : notify(toast, status.error, "Email o Password incorrecto!");
         })
         .catch((error) => {
