@@ -2,7 +2,7 @@
 // React
 import { useEffect, useState } from 'react'
 // Middlewares
-import { getCourses } from '../../shared/middlewares/getCourses'
+import { getCourses } from '../../shared/middlewares/courses.middleware'
 // Chakra UI
 import { Heading, SimpleGrid, Box, Flex } from '@chakra-ui/react';
 // Components

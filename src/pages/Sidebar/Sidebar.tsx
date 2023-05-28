@@ -1,5 +1,5 @@
 // Chakra UI
-import { Flex, Box, Image, useColorModeValue } from "@chakra-ui/react";
+import { Flex, useColorModeValue } from "@chakra-ui/react";
 // Components
 import { LinkMenu } from "./Components/LinkMenu";
 // Icons
@@ -9,8 +9,8 @@ import { FiBriefcase } from "react-icons/fi"
 import { HiOutlineChatAlt2 } from "react-icons/hi"
 import { TbSocial } from "react-icons/tb"
 // Image
-import ob from "../../assets/img/ob.png"
-import logo from "../../assets/img/logo.png"
+// import ob from "../../assets/img/ob.png"
+// import logo from "../../assets/img/logo.png"
 // React
 import { useState } from "react";
 
@@ -30,7 +30,8 @@ export const Sidebar = (props: Props) => {
     };
     
     return(
-        <Flex flexDirection="column" 
+        <Flex 
+        flexDirection="column" 
         position="fixed"
         borderRight={border}
         h="100vh"
@@ -41,7 +42,7 @@ export const Sidebar = (props: Props) => {
         transition="all 0.2s linear 0s"
         w={isOpen ? "230px" : "85px"}
         >
-            <Box w={isOpen ? "140px" : "35px"} m={5}>
+            {/* <Box w={isOpen ? "140px" : "35px"} m={5}>
                 <Image 
                 src={isOpen ? logo : ob} 
                 alt="img/ob"
@@ -49,9 +50,9 @@ export const Sidebar = (props: Props) => {
                 h="100%"
                 w="100%"
                 />
-            </Box>
+            </Box> */}
 
-            <Box mt={7}>
+            <Flex flexDirection="column"  justifyContent="space-around" h="100%" p="10px 0" mt={7}>
                 <LinkMenu path="/" icon={BiHome} text="Inicio" isOpen={isOpen} active={activePath("Inicio")}/>
                 <LinkMenu path="/rutas" icon={MdOutlineSignpost} text="Ruta" isOpen={isOpen} active={activePath("Hoja de ruta")}/>
                 <LinkMenu path="/empleos" icon={FiBriefcase} text="Empleo" isOpen={isOpen} active={activePath("Empleo")}/>
@@ -61,7 +62,7 @@ export const Sidebar = (props: Props) => {
                 <LinkMenu path="/novedades" icon={BiNews} text="Novedades" isOpen={isOpen} active={activePath("Novedades")}/>
                 <LinkMenu path="/comunidad" icon={TbSocial} text="Comunidad" isOpen={isOpen} active={activePath("Comunidad")}/>
                 <LinkMenu path="/favoritos" icon={BiStar} text="Favoritos" isOpen={isOpen} active={activePath("Favoritos")}/>
-            </Box>
+            </Flex>
         </Flex>
   )
 };

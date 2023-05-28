@@ -6,7 +6,7 @@ import { useAuthContex } from "../../App";
 // React
 import { useEffect, useState } from "react";
 // Middlewares
-import { getCourses } from "../../shared/middlewares/getCourses";
+import { getCourses } from "../../shared/middlewares/courses.middleware";
 // Components
 import { CardCourse } from "../Courses/Components/CardCourse";
 import { DiscordModal } from "./Components/DiscordModal";

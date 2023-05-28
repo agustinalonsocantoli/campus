@@ -10,12 +10,12 @@ import React, { useContext, useState } from 'react';
 // Interfaces
 import { UserInt } from './interfaces/UserInt';
 // Components
-import { Login } from './pages/Login/Login';
 import  { RequireAuth } from './pages/RequireAuth/RequireAuth';
 import { Courses } from './pages/Courses/Courses';
 import { Sidebar } from './pages/Sidebar/Sidebar';
 import { Topbar } from './pages/Topbar/Topbar';
 import { Home } from './pages/Home/Home';
+import { Start } from './pages/Start/Start';
 
 const AuthContext = React.createContext<UserInt>({
   auth: localStorage.getItem('token') ? true : false,
@@ -60,11 +60,11 @@ function App() {
           <Flex>
             {user.auth && <Sidebar title={title} />}
 
-            <Box flex="1" pl="86px">
-            {user.auth && <Topbar setUser={setUser} title={title} setTitle={setTitle} />}
+            <Box flex="1" pl={user.auth ? "86px" : "0"}>
+                {user.auth && <Topbar setUser={setUser} title={title} setTitle={setTitle} />}
 
               <Routes>
-                <Route path='/login' element={!user.auth ? <Login setUser={setUser}/> : <Navigate to={"/"} />}/>
+                <Route path='/login' element={!user.auth ? <Start setUser={setUser}/> : <Navigate to={"/"} />}/>
 
                   <Route element={<RequireAuth />}>
                     <Route path='/' element={<Home />} />
