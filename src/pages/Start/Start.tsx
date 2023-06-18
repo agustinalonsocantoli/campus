@@ -8,7 +8,7 @@ import { Signup } from "./Views/Signup";
 // Icon
 import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from 'react-icons/hi2'
 // Img
-import loginImg from '../../assets/img/fondo.png'
+import loginImg from '../../assets/img/login.png'
 // Interfaces
 import { UserInt } from "../../interfaces/UserInt";
 

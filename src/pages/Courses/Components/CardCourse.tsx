@@ -1,8 +1,10 @@
 // Chakra UI
-import { Card, CardBody, Text, CardHeader, Heading, Image, Flex, Box, Icon } from '@chakra-ui/react';
+import { Card, CardBody, Text, CardHeader, Heading, Image, Flex, Box, Icon, Tooltip } from '@chakra-ui/react';
 // Icons 
 import { VscListOrdered } from 'react-icons/vsc'
 import { BiTimeFive } from 'react-icons/bi'
+// Lodash
+import { truncate } from 'lodash';
 
 interface Props {
     image: string;
@@ -33,9 +35,11 @@ export const CardCourse = (props: Props) => {
                 </Box>
             </Box>
 
-            <CardHeader pb={1}>
-                <Heading size='md'>{name}</Heading>
-            </CardHeader>
+            <Tooltip hasArrow label={name}>
+                <CardHeader pb={1}>
+                    <Heading size='md'>{truncate(name, {length: 24})}</Heading>
+                </CardHeader>
+            </Tooltip>
 
             <CardBody pt={1} ml={1}>
                 <Flex gap={10}>

@@ -16,6 +16,7 @@ import { Sidebar } from './pages/Sidebar/Sidebar';
 import { Topbar } from './pages/Topbar/Topbar';
 import { Home } from './pages/Home/Home';
 import { Start } from './pages/Start/Start';
+import { Jobs } from './pages/Jobs/Jobs';
 
 const AuthContext = React.createContext<UserInt>({
   auth: localStorage.getItem('token') ? true : false,
@@ -69,7 +70,7 @@ function App() {
                   <Route element={<RequireAuth />}>
                     <Route path='/' element={<Home />} />
                     <Route path='/rutas' element={<Heading p="5%" fontSize={30}>Rutas</Heading>} />
-                    <Route path='/empleos' element={<Heading p="5%" fontSize={30}>Empleo</Heading>} />
+                    <Route path='/empleos' element={<Jobs />} />
                     <Route path='/cursos' element={<Courses />} />
                     <Route path='/certificaciones' element={<Heading p="5%" fontSize={30}>Certificaciones</Heading>} />
                     <Route path='/foros' element={<Heading p="5%" fontSize={30}>Foros</Heading>} />

@@ -10,8 +10,8 @@ import { IoLogoDiscord } from "react-icons/io5"
 export const DiscordModal = () => {
     return(
         <Flex 
-        h="278px" 
-        minH="278px" 
+        h="250px" 
+        minH="250px" 
         bg="linear-gradient(rgb(68, 61, 189) 0%, rgb(43, 56, 175) 100%)" 
         pos="relative"
         overflow="hidden"
@@ -19,10 +19,9 @@ export const DiscordModal = () => {
         flexDir="column"
         justifyContent="space-between"
         >
-            <Flex flexDir="column" color="#FFFFFF" p="28px" gap="28px" >
-                <Text fontSize={14}>OpenBootcamp Discord</Text>
+            <Flex flexDir="column" color="#FFFFFF" p="28px" gap="28px">
 
-                <Text textTransform="uppercase" fontSize={24} lineHeight="22px">
+                <Text textTransform="uppercase" fontSize={24} lineHeight="22px" mt="10px">
                     Aprende y Comparte en <Text as="strong">Comunidad</Text>
                 </Text>
 
